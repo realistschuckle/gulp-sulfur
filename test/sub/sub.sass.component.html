@@ -1,0 +1,34 @@
+<!--
+		 SUB SASS!!!
+		 The SASS component represents a component with SASS in a subdirectory.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module is="sub-sass-component">
+	<template>
+		<style>
+		@import "../colors";
+		
+		:host {
+			display: block;
+
+			h1 {
+				color: $main-color;
+
+				&.sub-amazing {
+					font-variant: italic;
+				}
+			}
+		}
+		</style>
+		<h1 class="sub-amazing">Some content</h1>
+		<content></content>
+	</template>
+
+	<script>
+	Polymer({
+		is: 'sub-sass-component'
+	});
+	</script>
+</dom-module>

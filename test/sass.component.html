@@ -1,0 +1,34 @@
+<!--
+		 SASS
+		 The SASS component represents a component with SASS in it.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module is="sass-component">
+	<template>
+		<style>
+		@import "colors";
+		
+		:host {
+			display: block;
+
+			h1 {
+				color: $main-color;
+
+				&.amazing {
+					font-variant: italic;
+				}
+			}
+		}
+		</style>
+		<h1 class="amazing">Some content</h1>
+		<content></content>
+	</template>
+
+	<script>
+	Polymer({
+		is: 'sass-component'
+	});
+	</script>
+</dom-module>

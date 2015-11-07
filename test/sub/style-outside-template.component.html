@@ -1,0 +1,25 @@
+<!--
+		 STYLE-OUTSIDE-TEMPLATE
+		 This has the older version of style outside the template block.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module is="style-outside-template">
+	<style>
+	:host {
+		display: block;
+	}
+	</style>
+
+	<template>
+ 		<h1>Some content</h1>
+		<content></content>
+	</template>
+
+	<script>
+	Polymer({
+		is: 'style-outside-template'
+	});
+	</script>
+</dom-module>

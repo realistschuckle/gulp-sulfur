@@ -1,0 +1,24 @@
+<!--
+		 BASIC
+		 The basic component represents the basic, best-structured component.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module is="basic-component">
+	<template>
+		<style>
+			:host {
+			  display: block;
+			}
+		</style>
+		<h1>Some content</h1>
+		<content></content>
+	</template>
+
+	<script>
+		Polymer({
+		  is: 'basic-component'
+		});
+	</script>
+</dom-module>

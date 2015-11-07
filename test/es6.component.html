@@ -1,0 +1,28 @@
+<!--
+		 ES2015!
+		 This componenet has ES 2015 in its script block!
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module is="es2015-component">
+	<template>
+		<style>
+		:host {
+			display: block;
+		}
+		</style>
+		<h1>Some content</h1>
+		<content></content>
+	</template>
+
+	<script>
+	class Es2015Component {
+		beforeRegister() {
+			this.is = 'es2015-component';
+		}
+	}
+
+	Polymer(Es2015Component);
+	</script>
+</dom-module>

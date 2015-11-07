@@ -1,0 +1,28 @@
+<!--
+		 SUB - ES2015!
+		 This componenet in a subdirectory has ES 2015 in its script block!
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module is="sub-es2015-component">
+	<template>
+		<style>
+		:host {
+			display: block;
+		}
+		</style>
+		<h1>Some content</h1>
+		<content></content>
+	</template>
+
+	<script>
+	class SubEs2015Component {
+		beforeRegister() {
+			this.is = 'sub-es2015-component';
+		}
+	}
+
+	Polymer(SubEs2015Component);
+	</script>
+</dom-module>
