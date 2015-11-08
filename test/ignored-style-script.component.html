@@ -1,0 +1,39 @@
+<!--
+     IGNORED STYLE!
+     The ignored-style component has a style tag that should have no process.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module is="ignored-style-component">
+  <template>
+    <style>
+      $display: block;
+      :host {
+        display: $display;
+      }
+    </style>
+    <style data-no-process>
+      --css-variable: {
+        color: red;
+      }
+    </style>
+    <h1>Some content</h1>
+    <content></content>
+  </template>
+
+  <script>
+  class Es2015Component {
+    beforeRegister() {
+      this.is = 'es2015-component';
+    }
+  }
+
+  Polymer(Es2015Component);
+  </script>
+  <script data-no-process>
+    Polymer({
+      is: 'ignored-style-component'
+    });
+  </script>
+</dom-module>
