@@ -17,8 +17,12 @@ function * iterateNodeChildren (node) {
 	}
 }
 
-function extract (tagName, extension) {
+function extract (tagName, extension, ignoreAttr) {
 	return function (relative, coll, index, node) {
+		if (node.nodeName === tagName && node.attrs && node.attrs.length && node.attrs.some(el => el.name === ignoreAttr)) {
+			return;
+		}
+
 		if (node.nodeName === tagName) {
 			var relative = fileIndex + '.' + util.replaceExtension(relative, extension);
 			fileIndex += 1;
@@ -39,8 +43,8 @@ function extract (tagName, extension) {
 }
 
 var extractors = [
-	extract('script', '.js'),
-  extract('style', '.css')
+	extract('script', '.js', 'data-no-process'),
+  extract('style', '.css', 'data-no-process')
 ];
 
 function walk(plugin, file, node) {
@@ -98,21 +102,20 @@ function anneal (opts) {
 			} else if (file.source) {
 				obj.others.push(file);
 			}
+		} else {
+			this.push(file);
 		}
 		cb();
 	}, function (cb) {
 		for (var key of cooler.keys()) {
 			var record = cooler.get(key);
 			var content = record.source.contents.toString();
-
 			for (var atom of record.others) {
 				var placeholder = `<!--${atom.relative}-->`;
 				var replacement = `<${atom.tagName}>${atom.contents.toString()}</${atom.tagName}>`;
 				content = content.replace(placeholder, replacement);
 			}
-
 			record.source.contents = new Buffer(content);
-			
 			this.push(record.source);
 		}
 		cooler.clear();
